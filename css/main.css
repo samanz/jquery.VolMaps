@@ -1,0 +1,86 @@
+@import "clear.css";
+body { font-family:helvetica, arial, sans-serif;}
+strong { font-weight:bold; }
+#map { position:relative; overflow:hidden; }
+#images { position:absolute; z-index:1;}
+#inner { position:absolute; top:0; bottom:0; z-index:1; }
+#tiles { position:relative; width:800px; height:1000px; }
+#tiles img { cursor:-moz-grab; }
+#map #inner img { position:absolute; }
+#controls { position:absolute; z-index:13; width:100%; }
+#markers li { position:absolute; z-index:11;}
+#infowindow { position:absolute; z-index:11; background:#fff; border:1px solid #000;}
+#infowindows img { position:absolute; z-index:12; }
+h2 { font-size:17px; font-weight:bold; margin:0 0 5px 0; }
+#infowindow form { width:300px; position:relative; }
+#infowindow .inner { position:relative; padding:10px;  }
+#infowindow #exitLink { font-family:helvetica, sans-serif; color:#444; position:absolute; right:5px; top:5px; font-size:15px; text-decoration:none; padding:3px 5px;}
+#zoom_in, #zoom_out { display:block; width:10px; padding:3px 5px; margin:5px; background:#fff; 
+	border:1px solid #333; border-left-color:#ccc; border-top-color:#ccc; text-decoration:none; color:#000; text-align:center; }
+
+#zoom_in { position:absolute; top:10px; left:183px; }
+#zoom_out { position:absolute; top:10px; left:0; }
+
+#map canvas { position:absolute; z-index:10; }
+#annotationControls { overflow:hidden; position:absolute; bottom:10px; right:10px; z-index:3; border:2px solid #000; background:#fff; }
+#annotationControls .second { position:relative; width:271px; height:180px; }
+#annotationControls.small { height:20px; }
+.annTop { background:#000 url(../img/ann-con-bk.gif) repeat-x; overflow:hidden; zoom:1; }
+.annTop li { float:left; display:inline; }
+.annTop a { display:block; padding:5px 10px; font-size:11px; color:#fff; text-decoration:none; border-right:2px solid #555;}
+.annTop a.current { background:#000; }
+.annTop a#annSmall { text-indent:-5000px; width:8px; height:10px; float:right; background:url(../img/small.gif) 50% 50% no-repeat;
+		padding:3px 6px; display:block; } 
+.small .annTop a#annSmall { background-image:url(../img/large.gif); }
+#annAR li { float:left; }
+#annAR li a { display:block; padding:2px 0; width:20px; text-align:center; background:#fff url(../img/annAR-bk.gif) repeat-x; 
+	border:1px solid #000; border-bottom:0; text-decoration:none; color:#333; }
+#annAR li a#annA { border-right:0; }
+#annAR li a#annR { border-right:0; }
+#annAll, #annMy { overflow:auto; height:160px; }
+#annAR { position:absolute; width:42px; right:0px; bottom:0px; }
+#annAll li, #annMy li { padding:5px 8px; margin:0; height:23px; background:url(../img/li-bk.gif) repeat-x; border-bottom:1px solid #666; cursor:pointer; }
+#annAll li.selected, #annMy li.selected { background:#B5D5FF; }
+#annAll li h2, #annMy li h2 { font-size:13px; font-weight:normal; float:left; width:180px; padding:6px 10px; }
+#annMy li.subtract { border-bottom:1px solid #000; border-left:1px solid #000; margin-left:10px; clear:both; background:#e8e8e8; 
+		padding:5px; font-size:12px; height:10px;
+	}
+#annMy li.subtract.selected { background:#B5D5FF; }
+span.color { width:19px; height:19px; border:1px solid #000; display:block; float:left; background:url(../img/polygon-ann.png); }
+.Polyline span.color { background:url(../img/polyline-ann.png); }
+.annShow { float:right; width:11px; height:11px; background:url(../img/active.gif) no-repeat; margin:3px; text-indent:-5000px;}
+.annShow.inactive { background-image:url(../img/inactive.gif); }
+
+#actions { position:absolute; top:60px; left:5px; background:#e8e8e8; width:34px; clear:both; padding:3px 0; }
+#actions li { width:28px; height:28px; background:url(../img/actionButton.gif); margin:0 3px 0 3px; }
+#actions li.selected { background:url(../img/selected.png); }
+#actions li a { height:22px; background:url(../img/hand.png) 50% 50% no-repeat; padding:3px; text-indent:-5000px; display:block; width:22px; }
+#actions li a#points { background-image:url(../img/point.png); background-position:50% 50%;}
+#actions li a#polygons { background-image:url(../img/polygon.png); background-position:50% 50%; margin-top:5px; }
+#actions li a#polylines { background-image:url(../img/polyline.png); background-position:50% 50%;}
+#levels { position:absolute; height:20px; bottom:0; left:0; overflow:hidden; width:190px; z-index:15; background:#e8e8e8;}
+#levels li img { width:130px;}
+#levels li { padding:10px;}
+#levels li.selected { background:#B5D5FF;}
+#showLevels { background:#000; height:14px; padding:3px; color:#fff; text-decoration:none; display:block; }
+#showLevels:hover { background:#333; text-decoration:underline;}
+#overlay { position:absolute; z-index:20; top:0; right:0; left:0; bottom:0; background:#000; opacity:0; filter:alpha(opacity=0); }
+#modal { position:absolute; z-index:22; left:0; right:0; top:0; background:#fff; border-bottom:2px solid #000; padding:20px; }
+#colorPicker { height:180px; overflow:auto; border:1px solid #888; margin:10px; padding:2px;}
+#colorPicker li a { display:block;  padding:5px; border-bottom:1px solid #999; }
+#colorPicker li a:hover { display:block;  padding:5px; background:#eee; border-bottom:1px solid #999; }
+#colorPicker li div { margin:1px 10px 1px 0; }
+#error { padding:5px; border:3px solid #f00; overflow:hidden; zoom:1;}
+a.button { display:block; float:right; color:#000; text-decoration:none; padding:4px 8px; background:#e8e8e8; border:1px solid #000; border-left-color:#bbb; border-top-color:#bbb; }
+
+#save { position:absolute; padding:10px; top:10px; right:10px; font-size:12px; background:#eee; 
+	border:1px solid #000; border-top-color:#ccc; border-left-color:#ccc; color:#333; text-decoration:none; }
+
+/* =Slider */
+#slider { position:absolute; top:16px; left:38px; }
+#zoomSlider { position:relative; width:140px; height:20px; background:url(../img/slider-bk.png) repeat-x;}
+#zoomSlider span { position:absolute; display:block; width:1px; background:#a8a8a8; height:20px; }
+#zoomSlide { position:absolute; background:#000; height:20px; }
+
+/* =Status */ 
+#mapStatus { position:absolute; right:20px; top:10px; background:#fff; border:1px solid #000; width:300px; z-index:30; padding:10px; }

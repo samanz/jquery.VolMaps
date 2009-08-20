@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	  <!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]-->
+      <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+      <script src="js/Annotations.js" type="text/javascript" charset="utf-8"></script>
+      <script src="js/jquery.maps.3d.js" type="text/javascript" charset="utf-8"></script>
+      <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" charset="utf-8"/>
+      <!--[if lte IE 7]> <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" charset="utf-8" /> <![endif]-->
+      <title>
+         Proof of Concept of the maps system for KESM data.
+      </title>
+   </head>
+   <body>
+      <div id = "map" style = "width:500px; float:right"> </div>
+   </body>
+   <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+          var res = [ 
+		  	               {"width":864,"height":544},			
+			               {"width": 1728,"height":1088},			
+			               {"width": 3456,"height":2176},			
+			               {"width": 6912,"height":4352},			
+			               {"width": 13824,"height":8704}			
+			            ]; // Resolutions of the different zoom levels
+          var cols = [0, 2304, 4608, 6912, 9216, 11520]; // Column x start locations in highest locations
+          $("#map").createMap(
+             { zoom:1, // Initial Zoom Level
+               zoom_levels:5, // Amound of zoom levels
+               levels:100, // Amount of z Levels of data 
+               level:1, // Start level
+               image_name:"%L/%C/%Z-%X-%Y.jpg", 
+               // Name of image (%L = level, %C = Column, %Z = Zoom, %X = X pos, %Y = Y Pos)
+               image_dir:"Place image dir here", 
+               dataset_id: 1, // Id of image dir for storing & retrieving annotations if enabled 
+               resolutions: res, 
+               columns: cols 
+            });
+          $("#map").addAnnotations('/maps/annotations/add'); // Right now pass in url to save annotations to
+          $("#map").addLevels(); // Adds Level selector
+      });
+   </script>
+
+</html>
